@@ -2,8 +2,65 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>Level-up-your-game</title>
+		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+		
 	</head>
 	<body>
+		<div id="contentDiv">
+			<!--上部声音按钮-->
+			<button onclick="sound()" id="sound">声音：开</button>
+			<!--主菜单-->
+			<div id="homePage">			 	
+			 	<div id="buttonGroup">
+			 		<button onclick="begin()">开始游戏</button>
+		        	<button onclick="shop()">商店</button>
+		        	<button onclick="achievement()">成就</button>
+		        	<button onclick="leave()">离开游戏</button>
+			 	</div>		        		        
+		   	</div>
+		   	<!--模式选择菜单-->
+		   	<div id="patternPage">			 	
+			 	<div id="buttonGroup">
+			 		<button onclick="normal()">正常模式</button>
+		        	<button onclick="infinite()">无限模式</button>		        	
+			 	</div>		        		        
+		   	</div>
+		   	<!--关卡选择菜单-->
+		   	<div id="checkpointPage">			 	
+			 	<div id="buttonGroup">
+			 		<button onclick="nStart()">1</button>
+			 		<button onclick="nStart()">2</button>
+			 		<button onclick="nStart()">3</button>
+			 		<button onclick="nStart()">4</button>
+			 		<button onclick="nStart()">5</button>
+			 		<button onclick="nStart()">6</button>
+			 		<button onclick="nStart()">7</button>
+			 		<button onclick="nStart()">8</button>
+			 		<button onclick="nStart()">9</button>
+			 		<button onclick="nStart()">10</button>
+			 		<button onclick="nStart()">11</button>
+			 		<button onclick="nStart()">12</button>
+			 		<button onclick="nStart()">13</button>
+			 		<button onclick="nStart()">14</button>
+			 		<button onclick="nStart()">15</button>			
+			 	</div>		        		        
+		   	</div>
+		   	<!--底部金币-->
+		   	<p>金币:<span id="moneyScore">0</span></p>
+			<canvas id="can" width="320" height="568"></canvas>
+		</div>
+		<div style="display: none">
+		    <img src="../image/bg0.png" id="bgimg">
+		    <img src="../image/hero5.png" id="heroimg1">
+		    <img src="../image/hero6.png" id="heroimg2">
+		    <img src="../image/hero3.png" id="heroimg3">
+		    <img src="../image/d1.png" id="d1">
+		    <img src="../image/d2.png" id="d2">
+			<img src="../image/d3.png" id="d3">
+		    <img src="../image/over.png" id="over">
+		</div>
 	</body>
+	<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/game.js" type="text/javascript" charset="utf-8"></script>
 </html>
