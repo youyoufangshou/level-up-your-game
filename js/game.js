@@ -15,7 +15,7 @@ var shotArray=[];
 var g_over;
 
 //// 绑定事件
-//window.addEventListener("keydown",keyDown,true); // 注册键盘按下事件
+window.addEventListener("keydown",keyDown,true); // 注册键盘按下事件
 //window.addEventListener("keyup",keyUp,true); //注册键盘键盘弹起来 事件
 //初始化画布
 g_can=document.getElementById("can");
@@ -24,7 +24,7 @@ g_context=g_can.getContext("2d");
 //初始化背景图
 g_backgound=new Background(0,0,"bgimg");
 ////初始化英雄
-//g_hero=new Hero(80,86,"heroimg1","heroimg2");
+g_hero=new Hero(120,450,"heroimg1","heroimg2");
 //g_over=new Over() ;
 //设置定时器每一秒执行一次
 
@@ -33,7 +33,8 @@ setInterval(function(){
    
     g_backgound.show();
 //  //开始绘制英雄
-//  g_hero.show();
+    g_hero.show();
+
 //  count++;
 //  if(count%64==0){
 //      //将敌机放入数组
@@ -50,29 +51,43 @@ setInterval(function(){
 //      var s=enemyArray[i];
 //		enemyArray[i].fire();
 // }
-},10);
+},50);
  
-////键盘事件
-////按下事件
-//function keyDown(e){
-//  //根据keyCode判断按下的是哪个键盘
-//  var code=e.keyCode;
-//  if(code==65){//左移
-//		g_hero.left(true);		
-//	}else if(code==68){// 右移
-//		g_hero.right(true);
-//	}
-//}
-////弹起事件
-//function keyUp(e){
-//  //根据keyCode判断按下的是哪个键盘
-//  var code=e.keyCode;
-//  if(code==65){//左移
-//		g_hero.left(false);		
-//	}else if(code==68){// 右移
-//		g_hero.right(false);
-//	}
-//}
+
+//键盘按下去  键盘↓键
+function keyDown(e){
+    //根据keyCode判断按下的是哪个键盘
+    var code=e.keyCode;
+     if(code==37) //左
+     {
+     	if(g_hero.x!=0){//防止出界
+     		g_hero.x=g_hero.x-5;
+     	}     	
+     	
+     }else if(code==39) //右
+     {
+     	if(g_hero.x!=255){//防止出界
+     		g_hero.x=g_hero.x+5;
+     		console.log(g_hero.x);
+     	}
+     }else if(code==40)//下
+     {
+     	
+     	if(g_hero.y!=460){//防止出界
+     		g_hero.y=g_hero.y+5;
+     		console.log(g_hero.y);
+     	};
+     	
+     }else if(code==38)//上
+     {
+     	if(g_hero.y!=30){//防止出界
+     		g_hero.y=g_hero.y-5;
+     		console.log(g_hero.y);
+     	};
+     }
+}
+
+
 
 //背景图刷新事件
 function Background(x,y,id){
@@ -103,3 +118,29 @@ Background.prototype.show=function(){
     }
           
 }
+//创建飞机函数
+function Hero(x, y, id1, id2) {
+	this.x = x;
+	this.y = y;
+	this.count=0;
+	this.img1 = document.getElementById(id1);
+	this.img2 = document.getElementById(id2);
+
+}
+//画出我方飞机
+Hero.prototype.show = function() {
+
+	var img;
+	this.count++;
+	if (this.count % 3 == 0) {
+		img=this.img1;
+	} else {
+		img=this.img2;
+	}
+	if(this.count==100){
+		this.count=0;
+	}
+	g_context.drawImage(img,this.x,this.y);	
+	
+}
+
